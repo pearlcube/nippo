@@ -1,21 +1,30 @@
-<nav class="bg-white border-b border-gray-100 shadow py-4">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+<nav class="bg-white border-bottom shadow py-3">
+    <div class="container d-flex justify-content-between align-items-center">
+        
+        <!-- ロゴ -->
+        <div class="flex-shrink-0">
+            <a href="/">
+                <x-application-logo class="w-10 h-10" />
+            </a>
+        </div>
+        
         <!-- ログイン情報 -->
-        <div class="text-gray-600">
-            <div class="font-medium text-lg">{{ Auth::user()->name }}</div>
-            <div class="text-sm">{{ Auth::user()->email }}</div>
+        <div class="text-center text-md-start">
+            <div class="fw-bold text-lg">{{ Auth::user()->name }}</div>
+            <div class="text-muted">{{ Auth::user()->email }}</div>
+        </div>
+        
+        <!-- ログアウトリンク -->
+        <div class="flex-shrink-0">
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button 
+                    type="submit" 
+                    class="btn btn-danger">
+                    Log Out
+                </button>
+            </form>
         </div>
 
-        <!-- ログアウトリンク -->
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
-            <button 
-                type="submit" 
-                class="bg-red-500 text-blue px-4 py-2 rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400">
-                Log Out
-            </button>
-        </form>
     </div>
 </nav>
-
-
